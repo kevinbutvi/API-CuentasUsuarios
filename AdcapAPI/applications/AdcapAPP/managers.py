@@ -72,8 +72,6 @@ class CuentaManager(models.Manager):
         """ Restaura saldo en cuenta luego de un destroy """
         saldo = self.filter(cliente__id = id).values("saldo_disponible").first()
         saldo_disp = saldo["saldo_disponible"]
-        print("++++++++++")
-        print(recuperado)
         if (recuperado["egreso"]["importe__sum"]  != None):
             egreso = recuperado["egreso"]["importe__sum"]
         else:
